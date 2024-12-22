@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="/css/admin.css">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <div id="admin-container">
+    <!-- Header Partial -->
+    <%- include("../partials/adminHeader") %>
+
+      <div class="container-fluid" id="admin-dashboard">
+        <!-- Hızlı Erişim Bölümü -->
+        <div id="quick-access" class="my-4">
+          <h2 class="border-bottom pb-2">Hızlı Erişim</h2>
+          <div class="row">
+            <div class="col-lg-3 col-md-6 my-2">
+              <div class="card text-center shadow-sm">
+                <div class="card-body">
+                  <i class="fas fa-plus fa-2x text-primary mb-3"></i>
+                  <h5 class="card-title">Ürün Ekle</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 my-2">
+              <a href="/admin/blogs" class="card text-center shadow-sm">
+              <div class="card text-center shadow-sm">
+                <div class="card-body">
+                  <i class="fas fa-blog fa-2x text-info mb-3"></i>
+                  <h5 class="card-title">
+                    Blog Ekle
+                  </h5>
+                </div>
+              </div>
+              </a>
+            </div>
+            <div class="col-lg-3 col-md-6 my-2">
+              <div class="card text-center shadow-sm">
+                <div class="card-body">
+                  <i class="fas fa-cogs fa-2x text-warning mb-3"></i>
+                  <h5 class="card-title">Hizmet Güncelle</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 my-2">
+              <a href="/admin/settings" class="card text-center shadow-sm">
+                <div class="card-body">
+                  <i class="fas fa-envelope fa-2x text-danger mb-3"></i>
+                  <h5 class="card-title">İletişim Düzenle</h5>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+     
+      </div>
+  </div>
+
+
+  <script src="js/admin.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

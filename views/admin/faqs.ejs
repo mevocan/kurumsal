@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - SSS Yönetimi</title>
+  <link rel="stylesheet" href="/css/admin.css">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+  label {
+    color: black;
+  }
+</style>
+
+<body>
+  <div id="admin-container">
+    <%- include("../partials/adminHeader") %>
+    <div class="container-fluid" id="admin-dashboard">
+      <h2 class="mb-4">SSS Yönetimi</h2>
+
+      <!-- SSS Ekleme Formu -->
+      <div class="card mb-4" id="">
+        <div class="card-header">
+          <h3 style="color: black;">Yeni Soru Ekle</h3>
+        </div>
+        <div class="card-body">
+          <form action="/admin/faqs/add" method="POST">
+            <div class="form-group">
+              <label for="question">Soru</label>
+              <input type="text" name="question" id="question" class="form-control" placeholder="Soru girin" required>
+            </div>
+            <div class="form-group">
+              <label for="answer">Cevap</label>
+              <textarea name="answer" id="answer" class="form-control" placeholder="Cevap girin" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">
+              <i class="fas fa-plus"></i> Ekle
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Mevcut SSS Listesi -->
+      <div class="card">
+        <div class="card-header">
+          <h3 style="color: black;">SSS Listesi</h3>
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Soru</th>
+                <th>Cevap</th>
+                <th>İşlemler</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% faqs.forEach((faq, index) => { %>
+              <tr>
+                <td><%= index + 1 %></td>
+                <td><%= faq.question %></td>
+                <td><%= faq.answer %></td>
+                <td>
+                  <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editModal<%= faq._id %>">
+                    <i class="fas fa-edit"></i> Düzenle
+                  </button>
+                  <form action="/admin/faqs/delete" method="POST" style="display: inline;">
+                    <input type="hidden" name="id" value="<%= faq._id %>">
+                    <button type="submit" class="btn btn-danger btn-sm">
+                      <i class="fas fa-trash"></i> Sil
+                    </button>
+                  </form>
+                </td>
+              </tr>
+
+              <!-- Düzenleme Modal -->
+              <div class="modal fade" id="editModal<%= faq._id %>" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" style="color: black;">SSS Düzenle</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <form action="/admin/faqs/edit" method="POST">
+                      <div class="modal-body">
+                        <input type="hidden" name="id" value="<%= faq._id %>">
+                        <div class="form-group">
+                          <label for="question">Soru</label>
+                          <input type="text" name="question" class="form-control" value="<%= faq.question %>" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="answer">Cevap</label>
+                          <textarea name="answer" class="form-control" rows="4" required><%= faq.answer %></textarea>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Güncelle</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/admin.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

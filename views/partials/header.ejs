@@ -1,0 +1,63 @@
+<header class="header-one">
+    <div class="top-header">
+        <div class="container clearfix">
+            <div class="logo float-left">
+                <a href="/"><img src="/images/logo/logo.png" alt="Site Logo"></a>
+            </div>
+            <div class="address-wrapper float-right">
+                <ul>
+                    <li class="address">
+                        <i class="icon flaticon-placeholder"></i>
+                        <h6>Address:</h6>
+                        <p>
+                            <%= settings?.address || 'Not available' %>
+                        </p>
+                    </li>
+                    <li class="address">
+                        <i class="icon flaticon-multimedia"></i>
+                        <h6>Mail us:</h6>
+                        <p>
+                            <%= settings?.contactEmail || 'Not available' %>
+                        </p>
+                    </li>
+                    <li class="quotes"><a href="#">GET A QUOTES</a></li>
+                </ul>
+            </div> <!-- /.address-wrapper -->
+        </div> <!-- /.container -->
+    </div> <!-- /.top-header -->
+
+    <div class="theme-menu-wrapper">
+        <div class="container">
+            <div class="bg-wrapper clearfix">
+                <div class="menu-wrapper float-left">
+                    <nav id="mega-menu-holder" class="clearfix">
+                        <ul class="clearfix">
+                            <li class="<%= activePage === 'home' ? 'active' : '' %>"><a href="/">Home</a></li>
+                            <li class="<%= activePage === 'about' ? 'active' : '' %>"><a href="/about">About us</a></li>
+                            <li class="<%= activePage === 'team' ? 'active' : '' %>"><a href="/team">Our team</a></li>
+                            <li class="<%= activePage === 'service' ? 'active' : '' %>"><a href="/service">Service</a>
+                            </li>
+                            <li class="<%= activePage === 'blog' ? 'active' : '' %>"><a href="/blog">Blogs</a></li>
+                            <li class="<%= activePage === 'contact' ? 'active' : '' %>"><a href="/contact">Contact</a>
+                            </li>
+                            <li class="<%= activePage === 'faq' ? 'active' : '' %>"><a href="/faq">Faq's</a></li>
+                        </ul>
+                    </nav>
+                </div> <!-- /.menu-wrapper -->
+
+                <div class="right-widget float-right">
+                    <ul>
+                        <li class="social-icon">
+                            <ul>
+                                <li><a href="<%= settings?.facebook || '#' %>"><i class="fa fa-facebook"
+                                            aria-hidden="true"></i></a></li>
+                                <li><a href="<%= settings?.instagram || '#' %>"><i class="fa fa-instagram"
+                                            aria-hidden="true"></i></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div> <!-- /.right-widget -->
+            </div> <!-- /.bg-wrapper -->
+        </div> <!-- /.container -->
+    </div> <!-- /.theme-menu-wrapper -->
+</header>

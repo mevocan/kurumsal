@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Blog</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+</head>
+
+<body>
+    <div class="main-page-wrapper">
+        <!-- Header -->
+        <%- include('partials/header') %>
+
+        <!-- Theme Inner Banner -->
+        <div class="theme-inner-banner section-spacing">
+            <div class="overlay">
+                <div class="container">
+                    <h2>Blog</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blog Section -->
+        <div class="blog-inner-page section-spacing">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-9 col-lg-8 col-12 our-blog">
+                        <div class="post-wrapper">
+                            <% blogs.forEach(blog => { %>
+                            <div class="single-blog">
+                                <div class="image-box">
+                                    
+                                    <div class="overlay">
+                                        <a href="#" class="date"><%= new Date(blog.createdAt).toLocaleDateString() %></a>
+                                    </div>
+                                </div>
+                                <div class="post-meta">
+									<h5 class="title">
+										<a href="/blog/<%= blog._id %>"><%= blog.title %></a>
+									</h5>
+									<!-- İçeriği HTML olarak render et -->
+									<p><%- blog.content.substring(0, 150) %>...</p>
+									<a href="/blog/<%= blog._id %>" class="read-more">READ MORE</a>
+								</div>
+								
+                            </div>
+                            <% }) %>
+                        </div>
+
+                        <!-- Pagination -->
+                        <div class="theme-pagination">
+                            <ul>
+                                <li><a href="#">1</a></li>
+                                <li class="active"><a href="#">2</a></li>
+                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Blog Sidebar -->
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8 col-12 blog-sidebar">
+                        <div class="sidebar-container sidebar-search">
+                            <form action="#">
+                                <input type="text" placeholder="Search...">
+                                <button><i class="fa fa-search" aria-hidden="true"></i></button>
+                            </form>
+                        </div>
+                        <div class="sidebar-container sidebar-categories">
+                            <h5 class="title">Categories</h5>
+                            <ul>
+                                <% categories.forEach(category => { %>
+                                <li><a href="#"><%= category %></a></li>
+                                <% }) %>
+                            </ul>
+                        </div>
+                        <div class="sidebar-container sidebar-recent-post">
+                            <h5 class="title">Recent Posts</h5>
+                            <ul>
+                                <% recentPosts.forEach(post => { %>
+                                <li class="clearfix">
+                                    <img src="<%= post.image || '/images/default-blog.jpg' %>" alt="<%= post.title %>" class="float-left">
+                                    <div class="post float-left">
+                                        <a href="/blog/<%= post._id %>"><%= post.title %></a>
+                                        <div class="date"><%= new Date(post.createdAt).toLocaleDateString() %></div>
+                                    </div>
+                                </li>
+                                <% }) %>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <%- include('partials/footer') %>
+
+        <!-- Scroll Top Button -->
+        <button class="scroll-top tran3s">
+            <i class="fa fa-angle-up" aria-hidden="true"></i>
+        </button>
+
+        <%- include('partials/scs') %>
+    </div>
+</body>
+
+</html>

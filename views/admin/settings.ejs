@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Settings</title>
+    <link rel="stylesheet" href="/css/admin.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div id="admin-container">
+        <!-- Header Partial -->
+        <%- include("../partials/adminHeader") %>
+
+        <div class="container-fluid" id="admin-dashboard">
+            <h2>Admin Ayarları</h2>
+            <form action="/admin/settings/update" method="POST">
+                <div class="row">
+                    <!-- İletişim Bilgileri -->
+                    <div class="col-md-6">
+                        <h4>İletişim Bilgileri</h4>
+                        <div class="form-group">
+                            <label for="contactEmail">İletişim E-posta</label>
+                            <input type="email" id="contactEmail" name="contactEmail" class="form-control"
+                                placeholder="E-posta adresi" value="<%= settings?.contactEmail || '' %>" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactPhone">Telefon Numarası</label>
+                            <input type="text" id="contactPhone" name="contactPhone" class="form-control"
+                                placeholder="Telefon numarası" value="<%= settings?.contactPhone || '' %>" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Adres</label>
+                            <textarea id="address" name="address" class="form-control" rows="3"
+                                placeholder="Adres giriniz"><%= settings?.address || '' %></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Sosyal Medya Bilgileri -->
+                    <div class="col-md-6">
+                        <h4>Sosyal Medya Bilgileri</h4>
+                        <div class="form-group">
+                            <label for="facebook">Facebook</label>
+                            <input type="url" id="facebook" name="facebook" class="form-control"
+                                placeholder="Facebook URL" value="<%= settings?.facebook || '' %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="instagram">Instagram</label>
+                            <input type="url" id="instagram" name="instagram" class="form-control"
+                                placeholder="Instagram URL" value="<%= settings?.instagram || '' %>">
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-3">Güncelle</button>
+            </form>
+        </div>
+
+    </div>
+
+    <script src="../js/admin.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

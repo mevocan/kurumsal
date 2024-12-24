@@ -7,6 +7,15 @@
   <title>Admin Girişi</title>
 </head>
 <style>
+  a{
+    text-decoration: none;
+    color: #007bff;
+    margin-bottom: 15px;
+    display: block;
+    justify-content: start;
+    align-items: start;
+    display: flex;
+  }
   body {
     margin: 0;
     padding: 0;
@@ -103,6 +112,8 @@
             <label for="password">Parola</label>
             <input type="password" id="password" name="password" class="form-control" required>
           </div>
+          <!-- forget password -->
+          <a href="/admin/forget-password">Şifremi Unuttum</a>
           <button type="submit" class="btn btn-primary">Giriş Yap</button>
         </form>
   </div>
